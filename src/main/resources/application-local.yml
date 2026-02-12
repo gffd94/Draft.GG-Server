@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/draft_gg?useSSL=false&allowPublicKeyRetrieval=true&characterEncoding=UTF-8&serverTimezone=Asia/Seoul
+    username: root
+    password: root # docker-compose에서 설정한 비번
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  data:
+    redis:
+      host: localhost
+      port: 6379
+
+  jpa:
+    hibernate:
+      ddl-auto: create # 개발 초기는 create (매번 새로 생성), 나중엔 validate/update로 변경
+    defer-datasource-initialization: true # 초기 데이터 로딩 허용

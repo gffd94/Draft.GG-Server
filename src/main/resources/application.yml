@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: draft-gg-server
+  profiles:
+    active: local # 기본적으로 로컬 환경 실행
+
+  # JPA 공통 설정
+  jpa:
+    open-in-view: false # OSIV 종료 (DB 커넥션 최적화)
+    properties:
+      hibernate:
+        format_sql: true # 쿼리 예쁘게 출력
+        show_sql: true
+        default_batch_fetch_size: 100 # N+1 문제 방지 (필수!)
+
+logging:
+  level:
+    org.hibernate.SQL: debug
+    org.hibernate.type.descriptor.sql: trace
