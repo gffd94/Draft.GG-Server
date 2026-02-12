@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    # H2 DB를 MySQL 모드로 실행 (메모리 DB)
+    url: jdbc:h2:mem:testdb;MODE=MySQL;DB_CLOSE_DELAY=-1
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop # 테스트 시작할 때 만들고, 끝나면 다 지움
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.H2Dialect # H2 방언 사용
