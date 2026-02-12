@@ -21,7 +21,7 @@
 ### Backend
 | Tech | Description |
 | :--- | :--- |
-| **Java 17** | Main Language |
+| **Java 21(LTS)** | Main Language |
 | **Spring Boot 3.x** | Web Framework |
 | **Spring Data JPA** | ORM (MySQL) |
 | **Redis** | **Distributed Lock (Redisson)**, Caching, **Stream (Message Queue)** |
