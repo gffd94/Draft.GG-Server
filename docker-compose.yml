@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  # 1. MySQL (메인 DB)
+  mysql:
+    image: mysql:8.0
+    container_name: draft-gg-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: draft_gg
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./db/mysql/data:/var/lib/mysql # 데이터 영구 저장
+      - ./db/mysql/init:/docker-entrypoint-initdb.d
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+    restart: always
+
+  # 2. Redis (캐시 & 분산락 & 메시지큐)
+  redis:
+    image: redis:alpine
+    container_name: draft-gg-redis
+    ports:
+      - "6379:6379"
+    command: redis-server --appendonly yes # 데이터 영구 저장 옵션
+    restart: always
